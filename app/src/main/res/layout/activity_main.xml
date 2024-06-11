@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context=".MainActivity">
+
+	<TextView
+		android:id="@+id/main_txt_title"
+		android:layout_width="match_parent"
+		android:layout_height="100dp"
+		android:background="#FF00FF00"
+		android:gravity="center"
+		tools:text="Hello Word!!!" />
+
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="16dp"
+		android:background="@color/black"
+		android:padding="16dp"
+		android:text="Title Name"
+		android:textColor="@color/white"
+		tools:text="Ονοματοδοσία Οθόνης της Εφαρμογής" />
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:background="@color/blue"
+		android:paddingHorizontal="32dp"
+		android:paddingVertical="8dp"
+		android:text="@string/dev_name"
+		android:textColor="@color/white" />
+
+	<Button
+		android:id="@+id/main_btn_next"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:backgroundTint="@color/red"
+		android:gravity="center_vertical"
+		android:text="@string/app_name"
+		android:textColor="#FFFFFF00" />
+
+	<ImageView
+		android:background="?attr/selectableItemBackground"
+		android:id="@+id/main_img_android"
+		android:layout_width="120dp"
+		android:paddingHorizontal="20dp"
+		android:layout_height="80dp"
+		android:layout_gravity="center"
+		android:src="@drawable/ic_android_black_24dp"
+		app:tint="#065A06" />
+</LinearLayout>
