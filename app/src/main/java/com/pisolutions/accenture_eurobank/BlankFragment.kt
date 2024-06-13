@@ -1,5 +1,6 @@
 package com.pisolutions.accenture_eurobank
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,9 +25,13 @@ class BlankFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        arguments?.getString("name")
+
 
         binding?.fragmentButtonActivity?.setOnClickListener {
 
+            val intent = Intent(context, SecondActivity::class.java)
+            startActivity(intent)
         }
     }
 
