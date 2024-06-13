@@ -1,5 +1,6 @@
 package com.pisolutions.accenture_eurobank
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.pisolutions.accenture_eurobank.databinding.ActivitySecondBinding
@@ -20,5 +21,13 @@ class SecondActivity : AppCompatActivity() {
         //binding?.secondTitle?.text = getString(R.string.app_name)
         val name = intent.extras?.getString("name")
         binding?.secondTitle?.text = name ?: getString(R.string.app_name)
+
+        binding?.secondBtn?.setOnClickListener {
+            val intent: Intent = Intent()
+            intent.putExtra("age", 100)
+
+            setResult(2000, intent)
+            finish()
+        }
     }
 }
