@@ -50,9 +50,8 @@ class MainActivity : AppCompatActivity() {
 
         if (fragmentContainer2 != null) {
             val fragmentTransaction = supportFragmentManager.beginTransaction()
-            fragmentTransaction.add(fragmentContainer2.id, BlankFragment())
+            fragmentTransaction.replace(fragmentContainer2.id, NetworkFragment())
             fragmentTransaction.commit()
-
         } else if (fragmentContainer != null) {
 //            val fragmentTransaction = supportFragmentManager.beginTransaction()
 //            fragmentTransaction.add(fragmentContainer.id, BlankFragment())
