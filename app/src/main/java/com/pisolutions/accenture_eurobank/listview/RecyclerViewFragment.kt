@@ -24,7 +24,7 @@ class RecyclerViewFragment : Fragment() {
 
         val mContext = context
         if (mContext != null) {
-            binding.recyclerView.adapter = MyRecyclerViewAdapter(mContext, getArrayData())
+            binding.recyclerView.adapter = MyRecyclerViewAdapter(getArrayData())
         }
     }
 
