@@ -23,6 +23,8 @@ class List2Fragment : Fragment() {
 
         binding.recyclerView.adapter = MyListAdapter(getListData())
 
+        val recyclerView = binding.recyclerView
+        recyclerView.adapter = MyListAdapter(getListData())
     }
 
     private fun getListData(): List<String> = listOf("5", "6", "7", "8", "9", "10", "11", "12")
