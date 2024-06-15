@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentContainerView
 import com.pisolutions.accenture_eurobank.databinding.ActivityMainBinding
+import com.pisolutions.accenture_eurobank.storage.StorageActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-        startActivity(Intent(this, HomeActivity::class.java))
+        startActivity(Intent(this, StorageActivity::class.java))
     }
 
 

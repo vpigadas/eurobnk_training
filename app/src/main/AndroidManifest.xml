@@ -15,6 +15,9 @@
 		android:theme="@style/Theme.AccentureEurobank"
 		tools:targetApi="31">
 		<activity
+			android:name=".storage.StorageActivity"
+			android:exported="false" />
+		<activity
 			android:name=".HomeActivity"
 			android:exported="false" />
 		<activity
