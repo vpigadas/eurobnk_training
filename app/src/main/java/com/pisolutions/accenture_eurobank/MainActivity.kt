@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentContainerView
+import com.pisolutions.accenture_eurobank.database.DatabaseFragment
 import com.pisolutions.accenture_eurobank.databinding.ActivityMainBinding
-import com.pisolutions.accenture_eurobank.storage.StorageActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,50 +18,58 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-        startActivity(Intent(this, StorageActivity::class.java))
+//        startActivity(Intent(this, StorageActivity::class.java))
     }
 
 
     override fun onPostCreate(a: Bundle?) {
         super.onPostCreate(a)
-
-        val fragmentContainer: FragmentContainerView? = binding?.mainFragmentContainer
-        val fragmentContainer2 = binding?.mainFragmentContainer2
-        if (fragmentContainer != null) {
-            val fragmentTransaction = supportFragmentManager.beginTransaction()
-            fragmentTransaction.add(fragmentContainer.id, BlankFragment())
-            fragmentTransaction.commit()
-        }
-
-        if (fragmentContainer2 != null) {
-
-
-            val fragment = BlankFragment()
-            val parameters = Bundle()
-            parameters.putString("name", "Vassilis")
-            parameters.putInt("age", 100)
-            fragment.arguments = parameters
-            val fragmentTransaction = supportFragmentManager.beginTransaction()
-            fragmentTransaction.add(fragmentContainer2.id, BlankFragment())
-            fragmentTransaction.commit()
-
-        }
-
-//        val intent = Intent(this,SecondActivity::class.java)
-//        startActivity(intent)
-
-        if (fragmentContainer2 != null) {
-            val fragmentTransaction = supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(fragmentContainer2.id, NetworkFragment())
-            fragmentTransaction.commit()
-        } else if (fragmentContainer != null) {
+//
+//        val fragmentContainer: FragmentContainerView? = binding?.mainFragmentContainer
+//        val fragmentContainer2 = binding?.mainFragmentContainer2
+//        if (fragmentContainer != null) {
 //            val fragmentTransaction = supportFragmentManager.beginTransaction()
 //            fragmentTransaction.add(fragmentContainer.id, BlankFragment())
 //            fragmentTransaction.commit()
+//        }
+//
+//        if (fragmentContainer2 != null) {
+//
+//
+//            val fragment = BlankFragment()
+//            val parameters = Bundle()
+//            parameters.putString("name", "Vassilis")
+//            parameters.putInt("age", 100)
+//            fragment.arguments = parameters
+//            val fragmentTransaction = supportFragmentManager.beginTransaction()
+//            fragmentTransaction.add(fragmentContainer2.id, BlankFragment())
+//            fragmentTransaction.commit()
+//
+//        }
+//
+////        val intent = Intent(this,SecondActivity::class.java)
+////        startActivity(intent)
+//
+//        if (fragmentContainer2 != null) {
+//            val fragmentTransaction = supportFragmentManager.beginTransaction()
+//            fragmentTransaction.replace(fragmentContainer2.id, NetworkFragment())
+//            fragmentTransaction.commit()
+//        } else if (fragmentContainer != null) {
+////            val fragmentTransaction = supportFragmentManager.beginTransaction()
+////            fragmentTransaction.add(fragmentContainer.id, BlankFragment())
+////            fragmentTransaction.commit()
+//
+//            fragmentDisplay(BlankFragment(), fragmentContainer)
+//        }
+//        fragmentDisplay(BlankFragment(), fragmentContainer)
+//
 
-            fragmentDisplay(BlankFragment(), fragmentContainer)
+        val fullFragmentContainer = binding?.fullFragmentContainer
+        if (fullFragmentContainer != null) {
+            val fragmentTransaction = supportFragmentManager.beginTransaction()
+            fragmentTransaction.add(fullFragmentContainer.id, DatabaseFragment())
+            fragmentTransaction.commit()
         }
-        fragmentDisplay(BlankFragment(), fragmentContainer)
     }
 
     fun fragmentDisplay(f: BlankFragment, fragmentContainer: FragmentContainerView?) {
