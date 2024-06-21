@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="bottom"
+	android:orientation="vertical"
+	tools:context=".FirstActivity">
+
+	<androidx.constraintlayout.widget.Group
+		android:id="@+id/first_button_group"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:visibility="visible"
+		app:constraint_referenced_ids="first_btn_one,first_btn_two,first_btn_three,first_btn_four" />
+
+	<Button
+		android:id="@+id/first_btn_one"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:backgroundTint="@color/blue"
+		android:text="Open A new Activity"
+		app:layout_constraintBottom_toTopOf="@id/first_btn_two" />
+
+	<Button
+		android:id="@+id/first_btn_two"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:backgroundTint="@color/green"
+		android:text="Open A new Fragment"
+		app:layout_constraintBottom_toTopOf="@id/first_btn_three" />
+
+	<Button
+		android:id="@+id/first_btn_three"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Open The Network Flow"
+		app:layout_constraintBottom_toTopOf="@id/first_btn_four" />
+
+	<Button
+		android:id="@+id/first_btn_four"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:backgroundTint="@color/black"
+		android:text="Score"
+		app:layout_constraintBottom_toTopOf="@id/first_btn_five"
+		app:layout_constraintBottom_toBottomOf="parent" />
+
+	<Button
+		android:id="@+id/first_btn_five"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:backgroundTint="@color/red"
+		android:text="Exit"
+		app:layout_constraintBottom_toBottomOf="parent" />
+
+
+	<androidx.fragment.app.FragmentContainerView
+		android:id="@+id/first_fragment_container"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/white"
+		android:visibility="gone" />
+</androidx.constraintlayout.widget.ConstraintLayout>
