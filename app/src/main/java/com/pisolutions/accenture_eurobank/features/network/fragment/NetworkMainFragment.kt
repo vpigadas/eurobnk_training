@@ -6,17 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.gson.Gson
 import com.pisolutions.accenture_eurobank.databinding.FragmentNetworkMainBinding
 import com.pisolutions.accenture_eurobank.features.network.NetworkViewModel
 import com.pisolutions.accenture_eurobank.features.network.fragment.second.SecondListAdapter
-import com.pisolutions.accenture_eurobank.network.JsonResponse
-import io.ktor.client.HttpClient
-import io.ktor.client.engine.cio.CIO
-import io.ktor.client.request.get
-import io.ktor.client.statement.bodyAsText
-import kotlinx.coroutines.runBlocking
 
 class NetworkMainFragment : Fragment() {
 
@@ -45,31 +39,15 @@ class NetworkMainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val client = HttpClient(CIO)
+        viewModel.makeARestApiCall()
 
-        runBlocking {
-            val response =
-                client.get("http://petstore.swagger.io/v2/pet/findByStatus?status=available")
-            Log.d("RESPONSE", response.bodyAsText())
-
-            val jsonResponse =
-                Gson().fromJson(response.bodyAsText(), Array<JsonResponse>::class.java)
-
-            val dataList = jsonResponse.mapNotNull { it.ide.toString() }
-
+        viewModel.streamListData.observe(viewLifecycleOwner, Observer { dataList ->
             binding.networkMainRecycler.adapter =
                 SecondListAdapter(dataList = dataList, listener = { value ->
                     Log.d("TAG", "user select the item ".plus(value))
-                    viewModel.selectedItem = value
-                    viewModel.streamSelectedItem.postValue(value)
+                    viewModel.itemSelected(value)
                 })
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        Log.d("TAG Fragment", "selected item value -> ".plus(viewModel.selectedItem))
+        })
     }
 
     companion object {

@@ -22,6 +22,8 @@ class ScoreActivity : AppCompatActivity() {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
 
+        viewModel.onStart()
+
         val fragmentContainerTop = binding?.fragmentContainerTop
         if(fragmentContainerTop != null){
             val transaction = supportFragmentManager.beginTransaction()

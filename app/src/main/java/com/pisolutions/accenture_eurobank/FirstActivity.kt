@@ -51,7 +51,7 @@ class FirstActivity : AppCompatActivity() {
         }
 
         binding?.firstBtnFive?.setOnClickListener {
-
+            finish()
         }
     }
 
