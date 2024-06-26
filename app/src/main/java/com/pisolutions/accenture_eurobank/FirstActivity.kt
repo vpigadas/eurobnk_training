@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.pisolutions.accenture_eurobank.databinding.ActivityFirstBinding
 import com.pisolutions.accenture_eurobank.features.activity.FeatureActivity
 import com.pisolutions.accenture_eurobank.features.fragment.FeatureFragment
@@ -13,10 +14,13 @@ import com.pisolutions.accenture_eurobank.features.score.ScoreActivity
 class FirstActivity : AppCompatActivity() {
 
     private var binding: ActivityFirstBinding? = null
+    private lateinit var viewModel: FirstViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFirstBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+
+        viewModel = ViewModelProvider(this).get(FirstViewModel::class.java)
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
@@ -51,6 +55,10 @@ class FirstActivity : AppCompatActivity() {
         }
 
         binding?.firstBtnFive?.setOnClickListener {
+            viewModel.createNotification()
+        }
+
+        binding?.firstBtnSix?.setOnClickListener {
             finish()
         }
     }

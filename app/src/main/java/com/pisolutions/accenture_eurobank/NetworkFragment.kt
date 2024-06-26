@@ -13,6 +13,7 @@ import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class NetworkFragment : Fragment() {

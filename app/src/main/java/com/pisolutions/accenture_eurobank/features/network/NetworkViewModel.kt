@@ -12,8 +12,10 @@ import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class NetworkViewModel : ViewModel() {
 
@@ -23,6 +25,7 @@ class NetworkViewModel : ViewModel() {
 
     private val _streamFragments: MutableLiveData<Fragment> =
         MutableLiveData(NetworkMainFragment.newInstance())
+
     val streamFragments: LiveData<Fragment> = _streamFragments
 
     private val _streamListData: MutableLiveData<List<String>> =
@@ -37,14 +40,17 @@ class NetworkViewModel : ViewModel() {
         val client = HttpClient(CIO)
 
         viewModelScope.launch {
-            val response = client.get(apiUrl)
-            Log.d("RESPONSE", response.bodyAsText())
+            withContext(Dispatchers.Default){
+                val response = client.get(apiUrl)
+                Log.d("RESPONSE", response.bodyAsText())
 
-            repository.transform(response.bodyAsText())
+                repository.transform(response.bodyAsText())
 
-            delay(5000)
-            _streamListData.postValue(repository.dataList.subList(0, repository.counter))
-            repository.increaseCounter()
+                delay(5000)
+                _streamListData.postValue(repository.dataList.subList(0, repository.counter))
+                repository.increaseCounter()
+            }
+
         }
     }
 }

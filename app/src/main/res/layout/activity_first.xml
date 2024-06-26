@@ -44,11 +44,21 @@
 		android:layout_height="wrap_content"
 		android:backgroundTint="@color/black"
 		android:text="Score"
-		app:layout_constraintBottom_toTopOf="@id/first_btn_five"
-		app:layout_constraintBottom_toBottomOf="parent" />
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintBottom_toTopOf="@id/first_btn_five" />
 
 	<Button
 		android:id="@+id/first_btn_five"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:backgroundTint="@color/yellow"
+		android:text="Notification"
+		android:textColor="@color/black"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintBottom_toTopOf="@id/first_btn_six" />
+
+	<Button
+		android:id="@+id/first_btn_six"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:backgroundTint="@color/red"

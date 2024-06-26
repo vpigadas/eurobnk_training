@@ -33,9 +33,9 @@ interface UserDao {
     fun readAll() : List<UserEntity>
 
     @Query("SELECT * FROM UserEntity LIMIT 1")
-    fun readFirst() : UserEntity?
+    suspend fun readFirst() : UserEntity?
 
     @Query("SELECT * FROM UserEntity WHERE first_name LIKE :firstName ")
-    fun read(firstName:String) : List<UserEntity>
+    suspend fun read(firstName:String) : List<UserEntity>
 
 }
